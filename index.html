@@ -2,28 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Ali Salimi Sadr | ML Engineer</title>
-  <meta name="description" content="Ali Salimi Sadr - Machine Learning Engineer focused on real-time AI systems, avatars, and applied ML."/>
-  <meta name="author" content="Ali Salimi Sadr"/>
+  <meta name="description" content="Ali Salimi Sadr is a Machine Learning Engineer building real-time AI systems, avatars, applied ML, and production inference pipelines." />
+  <meta name="author" content="Ali Salimi Sadr" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0b0b0c" />
   <link rel="canonical" href="https://similas.github.io/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ali Salimi Sadr"/>
-  <meta property="og:description" content="Machine Learning Engineer building real-time AI systems."/>
-  <meta property="og:url" content="https://similas.github.io/"/>
-  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Ali Salimi Sadr | ML Engineer" />
+  <meta property="og:description" content="Machine Learning Engineer building real-time AI systems, avatars, and applied ML." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://similas.github.io/" />
+  <meta property="og:site_name" content="Ali Salimi Sadr" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css"/>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ali Salimi Sadr | ML Engineer" />
+  <meta name="twitter:description" content="Machine Learning Engineer building real-time AI systems, avatars, and applied ML." />
+
+  <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Ali Salimi Sadr",
+    "alternateName": "Ali Sadr",
     "url": "https://similas.github.io/",
+    "image": "https://similas.github.io/og-preview.jpg",
     "sameAs": [
       "https://github.com/similas"
     ],
@@ -31,34 +38,155 @@
     "worksFor": {
       "@type": "Organization",
       "name": "QARL AI"
-    }
+    },
+    "knowsAbout": [
+      "Machine Learning",
+      "Real-time AI Systems",
+      "Low-latency Inference",
+      "Talking Avatars",
+      "Applied ML",
+      "TensorRT",
+      "FastAPI"
+    ]
   }
   </script>
 </head>
-
 <body>
+  <div class="noise"></div>
 
-  <main class="container">
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="Homepage">Ali Salimi Sadr</a>
 
-    <h1>Ali Salimi Sadr</h1>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="toggle-track">
+        <span class="toggle-thumb"></span>
+      </span>
+      <span class="toggle-label">Theme</span>
+    </button>
+  </header>
 
-    <p class="tagline">
-      Machine Learning Engineer — real-time AI systems, avatars, applied ML.
-    </p>
-
-    <section>
-      <p>
-        I build production-grade AI systems with a focus on low-latency inference,
-        real-time pipelines, and applied machine learning.
+  <main class="shell">
+    <section class="hero reveal">
+      <p class="eyebrow">ML Engineer</p>
+      <h1>Ali Salimi Sadr</h1>
+      <p class="lede">
+        I build real-time AI systems with a focus on low-latency inference, production ML,
+        interactive avatars, and applied research.
       </p>
+
+      <nav class="hero-links" aria-label="Primary links">
+        <a href="https://github.com/similas" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="mailto:your-email@example.com">Email</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+      </nav>
     </section>
 
-    <section class="links">
-      <a href="https://github.com/similas" target="_blank">GitHub</a>
-      <a href="mailto:your-email@example.com">Email</a>
+    <section class="section reveal" id="about">
+      <div class="section-head">
+        <p class="section-label">About</p>
+      </div>
+      <div class="glass">
+        <p>
+          I work on production-grade machine learning systems, especially where quality,
+          latency, and robustness all matter at the same time.
+        </p>
+      </div>
     </section>
 
+    <section class="section reveal" id="projects">
+      <div class="section-head">
+        <p class="section-label">Projects</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h2>Real-Time Talking Avatars</h2>
+          <p>
+            Built and optimized low-latency avatar pipelines for streaming and interactive use,
+            with focus on inference speed, system quality, and deployment readiness.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Production ML Systems</h2>
+          <p>
+            Designed applied ML pipelines spanning model serving, data processing, evaluation,
+            and deployment using practical engineering constraints.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Applied Research</h2>
+          <p>
+            Interested in machine learning systems that bridge research depth and real-world
+            product impact.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="publications">
+      <div class="section-head">
+        <p class="section-label">Publications</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h2>Selected Research</h2>
+          <p>
+            Add your papers, preprints, or thesis work here. Keep it minimal:
+            title, venue, year, and one link.
+          </p>
+          <a class="inline-link" href="#" aria-label="Add publication link">Add publication link</a>
+        </article>
+
+        <article class="card">
+          <h2>Current Focus</h2>
+          <p>
+            Real-time AI systems, efficient inference, applied machine learning, and
+            human-centered interactive ML products.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="contact">
+      <div class="section-head">
+        <p class="section-label">Contact</p>
+      </div>
+      <div class="glass compact">
+        <p>For collaborations, research, or engineering opportunities:</p>
+        <a class="inline-link" href="mailto:your-email@example.com">your-email@example.com</a>
+      </div>
+    </section>
   </main>
 
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      root.setAttribute("data-theme", "light");
+    } else {
+      root.setAttribute("data-theme", "dark");
+    }
+
+    toggle.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
