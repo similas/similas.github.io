@@ -47,138 +47,110 @@
 </head>
 <body>
 
-  <header class="topbar">
-    <a class="wordmark" href="/" aria-label="Homepage">Ali Salimi Sadr</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
-    </button>
-  </header>
+  <div class="page">
 
-  <main class="shell">
-
-    <section class="hero reveal">
-      <p class="eyebrow">Machine Learning Engineer</p>
-      <h1>Ali Salimi Sadr</h1>
-      <p class="tagline">
-        Building real-time AI systems with a focus on<br/>
-        low-latency inference and production ML.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <section class="section reveal" id="about">
-      <p class="section-label">About</p>
-      <p class="body-text">
-        I am a Machine Learning Engineer working on real-time AI systems, interactive avatars,
-        and production-grade ML pipelines. My work focuses on low-latency inference, system
-        performance, and bridging research with real-world deployment.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <section class="section reveal" id="projects">
-      <p class="section-label">Projects</p>
-
-      <div class="entries">
-        <article class="entry">
-          <h2>Real-Time Talking Avatars</h2>
-          <p>
-            Designed and optimized low-latency avatar pipelines for streaming and interactive
-            use, focusing on inference efficiency, system quality, and real-time performance.
-          </p>
-        </article>
-
-        <article class="entry">
-          <h2>Production ML Systems</h2>
-          <p>
-            Built and deployed machine learning pipelines covering model serving, evaluation,
-            and data processing with an emphasis on robustness and scalability.
-          </p>
-        </article>
-
-        <article class="entry">
-          <h2>Adaptive Inference Systems</h2>
-          <p>
-            Exploring approaches to improve inference efficiency under latency constraints,
-            focusing on practical deployment scenarios.
-          </p>
-        </article>
+    <!-- Left column -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <img class="avatar" src="photo.jpg" alt="Ali Salimi Sadr" width="120" height="120" />
+        <h1>Ali Salimi Sadr</h1>
+        <p class="role">Machine Learning Engineer</p>
+        <p class="tagline">Building real-time AI systems with a focus on low-latency inference and production ML.</p>
       </div>
-    </section>
 
-    <hr class="divider" />
-
-    <section class="section reveal" id="publications">
-      <p class="section-label">Publications &amp; Research</p>
-      <p class="body-text">
-        Focused on bridging research and production in machine learning systems,
-        particularly in low-latency inference and real-time applications.
-      </p>
-    </section>
-
-    <hr class="divider" />
-
-    <section class="section reveal" id="contact">
-      <p class="section-label">Links</p>
       <nav class="links" aria-label="External links">
         <a href="https://github.com/similas" target="_blank" rel="noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>GitHub</span>
         </a>
         <a href="https://www.linkedin.com/in/ali-salimi-sadr" target="_blank" rel="noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           <span>LinkedIn</span>
         </a>
-        <a href="https://royaleapi.com/player/ASADR07" target="_blank" rel="noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-          <span>Clash Royale</span>
-        </a>
+        <div class="cr-wrapper">
+          <span class="cr-label">competitive player !</span>
+          <a href="https://royaleapi.com/player/asadr07" target="_blank" rel="noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Clash Royale</span>
+          </a>
+        </div>
       </nav>
-    </section>
 
-  </main>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </aside>
 
-  <footer class="footer">
-    <p>&copy; 2026 Ali Salimi Sadr</p>
-  </footer>
+    <!-- Right column -->
+    <main class="content">
+
+      <section class="block">
+        <p class="section-label">About</p>
+        <p class="body-text">
+          I am a Machine Learning Engineer working on real-time AI systems, interactive avatars,
+          and production-grade ML pipelines. My work focuses on low-latency inference, system
+          performance, and bridging research with real-world deployment.
+        </p>
+      </section>
+
+      <section class="block">
+        <p class="section-label">Journey</p>
+        <p class="body-text">
+          Started programming in 2012 through robotics projects and competed in multiple competitions,
+          winning a silver medal at the Austrian Open RoboCup in Rescue League.
+          Studied Computer Engineering at QUT, then founded an edtech startup — raised seed funding, shipped over
+          300 educational robotics companion robots (Roobin), and won a UNICEF prize, all while pursuing
+          a Master's in AI at SBU. Worked as an MLE at Azki, Iran's largest insurtech company,
+          before moving to Canada to start a PhD in AI at Concordia University.
+          Went on to the Vector Institute as an MLA, and currently work as an ML Scientist at QARL AI,
+          building real-time interactive digital avatars.
+        </p>
+      </section>
+
+      <section class="block">
+        <p class="section-label">Projects</p>
+        <div class="entries">
+          <article class="entry">
+            <h2>Real-Time Talking Avatars</h2>
+            <p>Designed and optimized low-latency avatar pipelines for streaming and interactive use, focusing on inference efficiency, system quality, and real-time performance.</p>
+          </article>
+          <article class="entry">
+            <h2>Production ML Systems</h2>
+            <p>Built and deployed machine learning pipelines covering model serving, evaluation, and data processing with an emphasis on robustness and scalability.</p>
+          </article>
+          <article class="entry">
+            <h2>Adaptive Inference Systems</h2>
+            <p>Exploring approaches to improve inference efficiency under latency constraints, focusing on practical deployment scenarios.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="block">
+        <p class="section-label">Publications &amp; Research</p>
+        <p class="body-text">
+          Focused on bridging research and production in machine learning systems,
+          particularly in low-latency inference and real-time applications.
+        </p>
+      </section>
+
+    </main>
+  </div>
 
   <script>
     const root = document.documentElement;
     const toggle = document.getElementById("themeToggle");
-    const saved = localStorage.getItem("theme");
-
-    root.setAttribute("data-theme", saved === "light" ? "light" : "dark");
+    root.setAttribute("data-theme", localStorage.getItem("theme") === "light" ? "light" : "dark");
 
     toggle.addEventListener("click", () => {
       const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
       root.setAttribute("data-theme", next);
       localStorage.setItem("theme", next);
     });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("visible");
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
