@@ -150,6 +150,22 @@ body {
   letter-spacing: 0.02em;
 }
 
+/* ── GitHub contribution chart ── */
+
+.gh-chart {
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 6px;
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.85;
+  transition: filter var(--transition), opacity var(--transition);
+}
+
+:root[data-theme="light"] .gh-chart {
+  filter: none;
+  opacity: 1;
+}
+
 /* ── Theme toggle ── */
 
 .theme-toggle {
