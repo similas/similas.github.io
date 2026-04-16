@@ -209,6 +209,21 @@ body {
   color: var(--text-secondary);
 }
 
+/* ── Inline links ── */
+
+.body-text a,
+.entry a {
+  color: var(--text);
+  text-decoration-color: var(--text-secondary);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+
+.body-text a:hover,
+.entry a:hover {
+  text-decoration-color: var(--text);
+}
+
 /* ── Entries ── */
 
 .entries {
