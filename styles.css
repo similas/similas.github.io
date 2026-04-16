@@ -307,7 +307,15 @@ body {
 }
 
 .tl-item:last-child::before {
-  background: var(--text);
+  background: #3b82f6;
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); }
+  50% { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
 }
 
 .tl-date {
