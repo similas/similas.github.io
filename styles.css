@@ -281,7 +281,19 @@ body {
   position: relative;
   padding-left: 24px;
   border-left: 1px solid var(--border);
+  margin-bottom: 48px;
   transition: border-color var(--transition);
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: -1.5px;
+  bottom: 0;
+  height: 48px;
+  border-left: 2px dashed #3b82f6;
+  transform: translateY(100%);
+  opacity: 0.45;
 }
 
 .tl-item {
@@ -293,6 +305,7 @@ body {
   padding-bottom: 0;
 }
 
+/* Dot */
 .tl-item::before {
   content: "";
   position: absolute;
@@ -303,6 +316,7 @@ body {
   border-radius: 50%;
   background: var(--text-secondary);
   border: 2px solid var(--bg);
+  z-index: 1;
   transition: background var(--transition), border-color var(--transition);
 }
 
