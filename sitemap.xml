@@ -4,4 +4,12 @@
     <loc>https://similas.github.io/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://similas.github.io/roomi/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://similas.github.io/roomi/privacy-policy/</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>

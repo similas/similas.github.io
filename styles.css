@@ -400,6 +400,134 @@ body {
   opacity: 0.6;
 }
 
+/* ── Sub-pages (ROOMI, privacy policy) ── */
+
+.subpage {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+}
+
+.subpage-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.subpage-nav .theme-toggle {
+  margin-top: 0;
+}
+
+.subpage h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.subpage .lede {
+  margin-top: 12px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.subpage h2 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 40px 0 12px;
+}
+
+.subpage p,
+.subpage li {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.subpage ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subpage li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.subpage li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.subpage p + p {
+  margin-top: 12px;
+}
+
+.subpage a {
+  color: var(--text);
+  text-decoration-color: var(--text-secondary);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+
+.subpage a:hover {
+  text-decoration-color: var(--text);
+}
+
+.subpage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.meta-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-top: 8px;
+}
+
+.subpage-footer {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  transition: border-color var(--transition);
+}
+
 /* ── Mobile: stack layout ── */
 
 @media (max-width: 860px) {

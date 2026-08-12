@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ROOMI | Privacy Policy</title>
+  <meta name="description" content="Privacy policy for ROOMI, a home robot: what data it collects, how it is used, and how to reach us." />
+  <meta name="author" content="Ali Salimi Sadr" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://similas.github.io/roomi/privacy-policy/" />
+
+  <meta property="og:title" content="ROOMI | Privacy Policy" />
+  <meta property="og:description" content="Privacy policy for ROOMI, a home robot." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://similas.github.io/roomi/privacy-policy/" />
+
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <main class="subpage">
+
+    <nav class="subpage-nav" aria-label="Page navigation">
+      <a class="back-link" href="../">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>ROOMI</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </nav>
+
+    <h1>Privacy Policy</h1>
+    <p class="lede">How ROOMI handles your data.</p>
+    <p class="meta-note">Last updated: August 11, 2026</p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><b>Voice and command data</b> — audio you address to ROOMI, and the text transcribed from it, so it can understand and respond.</li>
+      <li><b>Home context</b> — the names, rooms, routines, and preferences you choose to set up.</li>
+      <li><b>Device and diagnostic data</b> — model, software version, connectivity status, and error logs used to keep the robot working.</li>
+    </ul>
+    <p>ROOMI does not record continuously. Audio is captured only around an interaction with the robot.</p>
+
+    <h2>How we use it</h2>
+    <p>
+      Data is used to operate ROOMI — understanding requests, carrying out tasks, remembering
+      your preferences — and to diagnose and fix problems. We do not sell your data, and we do
+      not use it for advertising.
+    </p>
+
+    <h2>Processing and storage</h2>
+    <p>
+      Processing happens on the device wherever it is practical. Some requests are sent to our
+      servers when they need more compute than the robot has. Data in transit is encrypted, and
+      stored data is kept only as long as it is needed to provide the service.
+    </p>
+
+    <h2>Sharing</h2>
+    <p>
+      We share data only with service providers that help us run ROOMI (for example hosting and
+      speech processing), and only to the extent they need it. We may also disclose data if
+      required by law.
+    </p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>Mute the microphone at any time using the control on the robot.</li>
+      <li>Review and delete stored interactions and home context from the companion app.</li>
+      <li>Request a copy of your data, or its deletion, by contacting us.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>
+      ROOMI is not directed at children under 13, and we do not knowingly collect personal
+      information from them. If a child has interacted with ROOMI and you want that data
+      removed, contact us and we will delete it.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy changes, we will update this page and revise the date above. Material
+      changes will be communicated in the app.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about privacy: <a href="mailto:ali@qarl.ai">ali@qarl.ai</a>
+    </p>
+
+    <footer class="subpage-footer">
+      ROOMI — a project by <a href="../../">Ali Salimi Sadr</a>.
+    </footer>
+
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    root.setAttribute("data-theme", localStorage.getItem("theme") === "light" ? "light" : "dark");
+
+    toggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    });
+  </script>
+</body>
+</html>
