@@ -336,42 +336,6 @@ a {
   opacity: 0.88;
 }
 
-/* Stats */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 56px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.stats > div {
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 4px;
-}
-
-.stats > div + div {
-  border-left: 1px solid var(--border);
-}
-
-.stats dt {
-  font-size: 0.75rem;
-  color: var(--text-3);
-  line-height: 1.35;
-}
-
-.stats dd {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-}
-
 /* ── Sections ── */
 
 .section {
@@ -759,46 +723,73 @@ a.row-title:hover {
 
 .city-list {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
 }
 
-.city-list button {
+.country-group {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.country-name {
   appearance: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 32px;
-  padding: 0 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
+  justify-self: start;
+  margin-top: 3px;
+  border: 0;
+  background: none;
   color: var(--text);
   font: inherit;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
   cursor: pointer;
-  transition: border-color var(--t), background-color var(--t);
+  transition: color var(--t);
 }
 
-.city-list button:hover,
-.city-list button[aria-pressed="true"] {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+.country-name:hover {
+  color: var(--accent);
 }
 
-.city-list .country {
+.country-count {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
+  font-weight: 400;
   color: var(--text-3);
 }
 
-.city-list .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+.country-cities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.city {
+  appearance: none;
+  height: 28px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: color var(--t), border-color var(--t), background-color var(--t);
+}
+
+.city:hover,
+.city[aria-pressed="true"] {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 /* Leaflet overrides */
@@ -819,26 +810,25 @@ a.row-title:hover {
   fill: var(--land-visited);
 }
 
-.pin {
-  position: relative;
-}
+/* No position rule on .pin: Leaflet positions markers absolutely, and
+   overriding that stacks pins in normal flow and shifts each one down. */
 
 .pin span {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 6px var(--accent-soft);
+  box-shadow: 0 0 0 2px var(--bg-elev);
   transition: transform var(--t);
 }
 
-.pin span::after {
+.pin.is-selected span::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
   background: var(--accent);
-  animation: ping 2.6s var(--ease) infinite;
+  animation: ping 2.2s var(--ease) infinite;
 }
 
 .pin:hover span,
@@ -1089,18 +1079,6 @@ a.row-title:hover {
     padding-top: 48px;
   }
 
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stats > div:nth-child(3) {
-    border-left: none;
-  }
-
-  .stats > div:nth-child(n + 3) {
-    border-top: 1px solid var(--border);
-  }
-
   .section {
     padding-top: 72px;
   }
@@ -1136,6 +1114,11 @@ a.row-title:hover {
 
   .map {
     height: 320px;
+  }
+
+  .country-group {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .footer {

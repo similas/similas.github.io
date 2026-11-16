@@ -26,11 +26,11 @@
   var map = L.map(mapEl, {
     scrollWheelZoom: false, // don't hijack page scrolling until the visitor engages
     zoomControl: false,
-    minZoom: 2,
+    // minZoom must stay below the zoom needed to fit every pin, or Leaflet
+    // clamps the initial view and the land layer renders out of sync.
+    minZoom: 0,
     maxZoom: 8,
     zoomSnap: 0.25,
-    maxBounds: [[-62, -200], [85, 200]],
-    maxBoundsViscosity: 1,
   });
   map.attributionControl.setPrefix(false);
   map.attributionControl.addAttribution('<a href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">Natural Earth</a>');
@@ -46,7 +46,7 @@
   var buttons = [];
   var markers = places.map(function (p, i) {
     var marker = L.marker([p.lat, p.lng], {
-      icon: L.divIcon({ className: "pin", html: "<span></span>", iconSize: [12, 12] }),
+      icon: L.divIcon({ className: "pin", html: "<span></span>", iconSize: [10, 10] }),
       title: p.city,
       alt: p.city + ", " + p.country,
       riseOnHover: true,
@@ -65,32 +65,83 @@
       if (i !== j) m.closeTooltip();
     });
     buttons.forEach(function (b, j) { b.setAttribute("aria-pressed", String(i === j)); });
-    var zoom = Math.max(map.getZoom(), 5);
+    var zoom = Math.max(map.getZoom(), 6);
     if (reduceMotion) map.setView([p.lat, p.lng], zoom);
     else map.flyTo([p.lat, p.lng], zoom, { duration: 1.1 });
     markers[i].openTooltip();
     card.classList.add("is-active");
   }
 
+  // City list, grouped by country (in the order countries first appear in places.js).
+  var groups = new Map();
   places.forEach(function (p, i) {
+    if (!groups.has(p.country)) groups.set(p.country, []);
+    groups.get(p.country).push(i);
+  });
+
+  function fitCountry(indices) {
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    markers.forEach(function (m) { m.closeTooltip(); var el = m.getElement(); if (el) el.classList.remove("is-selected"); });
+    var bounds = L.latLngBounds(indices.map(function (i) { return [places[i].lat, places[i].lng]; }));
+    var opts = { padding: [60, 60], maxZoom: 6 };
+    if (reduceMotion) map.fitBounds(bounds, opts);
+    else map.flyToBounds(bounds, Object.assign({ duration: 1.1 }, opts));
+    card.classList.add("is-active");
+  }
+
+  groups.forEach(function (indices, country) {
     var li = document.createElement("li");
-    var b = document.createElement("button");
-    b.type = "button";
-    b.setAttribute("aria-pressed", "false");
-    b.innerHTML = '<span class="dot" aria-hidden="true"></span>' + p.city + ' <span class="country">' + p.country + "</span>";
-    b.addEventListener("click", function () { select(i); });
-    li.appendChild(b);
+    li.className = "country-group";
+
+    var head = document.createElement("button");
+    head.type = "button";
+    head.className = "country-name";
+    head.innerHTML = country + ' <span class="country-count">' + indices.length + "</span>";
+    head.setAttribute("aria-label", "Show " + country + " on the map");
+    head.addEventListener("click", function () { fitCountry(indices); });
+
+    var cities = document.createElement("div");
+    cities.className = "country-cities";
+    indices.forEach(function (i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "city";
+      b.setAttribute("aria-pressed", "false");
+      b.textContent = places[i].city;
+      b.addEventListener("click", function () { select(i); });
+      cities.appendChild(b);
+      buttons[i] = b;
+    });
+
+    li.appendChild(head);
+    li.appendChild(cities);
     listEl.appendChild(li);
-    buttons.push(b);
   });
 
   if (markers.length) {
-    map.fitBounds(L.featureGroup(markers).getBounds(), { padding: [70, 70], maxZoom: 4 });
+    var pad = mapEl.offsetWidth < 500 ? 20 : 40;
+    map.fitBounds(L.featureGroup(markers).getBounds(), { padding: [pad, pad], maxZoom: 4 });
   } else {
     map.setView([30, 10], 2);
   }
 
   // ── Land (loaded when the map is about to scroll into view) ──
+
+  // Shapes that cross the 180° line (eastern Russia, Fiji) come with
+  // longitudes jumping from +180 to -180, which Leaflet draws as a band across
+  // the whole map. Shift their western half by +360° so each shape is continuous.
+  function unwrapDateline(feature) {
+    var g = feature.geometry;
+    var polygons = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
+    polygons.forEach(function (rings) {
+      var lngs = rings[0].map(function (c) { return c[0]; });
+      if (Math.max.apply(null, lngs) - Math.min.apply(null, lngs) <= 180) return;
+      rings.forEach(function (ring) {
+        ring.forEach(function (c) { if (c[0] < 0) c[0] += 360; });
+      });
+    });
+  }
+
   var landLoaded = false;
   function loadLand() {
     if (landLoaded || !window.topojson) return;
@@ -102,6 +153,7 @@
         countries.features = countries.features.filter(function (f) {
           return f.properties.name !== "Antarctica";
         });
+        countries.features.forEach(unwrapDateline);
         L.geoJSON(countries, {
           interactive: false,
           style: function (f) {
