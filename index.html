@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#09090b" />
+  <meta name="theme-color" content="#060608" />
+  <script>document.documentElement.classList.add("js");</script>
   <script src="theme.js"></script>
 
   <title>Ali Salimi Sadr — Machine Learning Engineer</title>
@@ -26,9 +27,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="home.css" />
 
   <script type="application/ld+json">
   {
@@ -53,312 +53,325 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="nav-name" href="#top">Ali Salimi Sadr</a>
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#places">Places</a>
-      </nav>
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
-        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
-        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </div>
+    <a class="nav-mark" href="#top" aria-label="Back to top">
+      <img src="photo.jpg" alt="" width="28" height="28" />
+      <span>ali<i>.</i>sadr</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#places">Places</a>
+    </nav>
+    <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </header>
 
-  <main id="main" class="wrap">
+  <!-- Hero: the name is "denoised" out of a particle cloud (hero.js) -->
+  <section class="hero" id="top">
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
 
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <img class="hero-avatar" src="photo.jpg" alt="Portrait of Ali Salimi Sadr" width="112" height="112" />
+    <div class="hud hud-tl" aria-hidden="true">
+      <span>sampler <b>ddim</b></span>
+      <span>t = <b id="hudStep">1000</b></span>
+    </div>
+    <div class="hud hud-tr" aria-hidden="true">
+      <span>z ∈ ℝ<sup>2</sup></span>
+      <span id="hudCursor">[ 0.000, 0.000 ]</span>
+    </div>
+
+    <div class="hero-content">
       <p class="status"><span class="live-dot" aria-hidden="true"></span>ML Scientist at QARL AI · Montréal</p>
-      <h1>Ali Salimi Sadr</h1>
+      <h1 class="hero-name"><span class="w">Ali</span> <span class="w">Salimi</span> <span class="w">Sadr</span></h1>
       <p class="hero-lede">
-        Machine Learning Engineer building <em>real-time AI systems</em> — from diffusion-based
-        talking avatars to low-latency inference running in production.
+        I build <em>real-time AI systems</em> — diffusion-based talking avatars,
+        low-latency inference, and ML that actually runs in production.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://www.linkedin.com/in/ali-salimi-sadr" target="_blank" rel="noreferrer">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.850 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
         <a class="btn" href="https://github.com/similasa" target="_blank" rel="noreferrer">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
         <a class="btn" href="https://royaleapi.com/player/9RVJG9R2V" target="_blank" rel="noreferrer" title="Competitive Clash Royale player">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18l-1.5-10-4.5 4-3-7-3 7-4.5-4z"/><path d="M5 21h14"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18l-1.5-10-4.5 4-3-7-3 7-4.5-4z"/><path d="M5 21h14"/></svg>
           Clash Royale
         </a>
       </div>
-    </section>
+    </div>
+
+    <a class="scroll-cue" href="#about" aria-label="Scroll to About"><span></span></a>
+  </section>
+
+  <main id="main">
 
     <!-- About -->
     <section class="section" id="about">
-      <h2 class="section-title"><span>01</span>About</h2>
-      <div class="prose">
-        <p>
-          I started programming in 2012 through robotics, and earned a silver medal at the
-          RoboCup Austrian Open 2014 (Rescue League). After studying Computer Engineering at QUT,
-          I co-founded <strong>Roobin</strong> — an edtech startup that raised seed funding,
-          shipped 300+ companion robots, and won a UNICEF Innovation Award.
-        </p>
-        <p>
-          I completed a Master's in AI at SBU and worked as an ML engineer at <strong>Azki</strong>,
-          Iran's largest insurtech. I then moved to Canada for PhD studies in AI at Concordia, with
-          coursework at Mila, later switching to an MSc in Computer Science. Since then I've worked
-          at e-SKY and the <strong>Vector Institute</strong>, co-founded Qliqless, and today I build
-          real-time interactive digital avatars as an ML Scientist at <strong>QARL AI</strong>.
-        </p>
+      <header class="section-head reveal">
+        <span class="idx">01</span><h2>About</h2>
+      </header>
+      <div class="about">
+        <figure class="portrait reveal">
+          <img src="photo.jpg" alt="Portrait of Ali Salimi Sadr" width="384" height="384" />
+          <figcaption>Montréal · 45.50°N 73.57°W</figcaption>
+        </figure>
+        <div class="about-text">
+          <p class="statement reveal">
+            From a <em>robotics kid</em> in 2012 to building <em>digital humans</em> that talk back in real time.
+          </p>
+          <p class="reveal">
+            I started programming through robotics and won a silver medal at the RoboCup Austrian Open 2014
+            (Rescue League). After Computer Engineering at QUT, I co-founded <strong>Roobin</strong> — an edtech
+            startup that raised seed funding, shipped 300+ companion robots, and won a UNICEF Innovation Award.
+          </p>
+          <p class="reveal">
+            I did a Master's in AI at SBU and worked as an ML engineer at <strong>Azki</strong>, Iran's largest
+            insurtech. Then I moved to Canada for PhD studies in AI at Concordia, with coursework at Mila, later
+            switching to an MSc in Computer Science. Since then: e-SKY, the <strong>Vector Institute</strong>,
+            co-founding Qliqless, and today real-time interactive avatars as an ML Scientist at <strong>QARL AI</strong>.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Experience -->
-    <section class="section" id="experience">
-      <h2 class="section-title"><span>02</span>Experience</h2>
-      <ol class="timeline">
+    <section class="section" id="work">
+      <header class="section-head reveal">
+        <span class="idx">02</span><h2>Work</h2>
+        <p class="section-note">most recent first</p>
+      </header>
 
-        <li class="tl-item is-current">
-          <p class="tl-date">2025 — Now</p>
-          <div class="tl-body">
-            <h3>QARL AI <span class="badge-now">Now</span></h3>
-            <p class="tl-role">Machine Learning Scientist</p>
+      <ol class="track">
+        <li class="entry spot reveal is-current">
+          <p class="entry-when">2025 — <b>now</b></p>
+          <div class="entry-main">
+            <h3>QARL AI <span class="live-tag"><span class="live-dot"></span>live</span></h3>
+            <p class="entry-role">Machine Learning Scientist</p>
             <p>Building end-to-end, audio-driven talking-avatar pipelines for real-time interactive digital humans — diffusion-based models, GPU inference optimization, and low-latency streaming.</p>
-            <div class="chips">
-              <a class="chip" href="https://www.qarl.ai/" target="_blank" rel="noreferrer">qarl.ai<span aria-hidden="true">↗</span></a>
-              <a class="chip" href="https://www.linkedin.com/company/qarl" target="_blank" rel="noreferrer">LinkedIn<span aria-hidden="true">↗</span></a>
-            </div>
+            <p class="tokens"><span>diffusion</span><span>audio→video</span><span>gpu inference</span><span>streaming</span></p>
+          </div>
+          <div class="entry-links">
+            <a href="https://www.qarl.ai/" target="_blank" rel="noreferrer">qarl.ai ↗</a>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2025</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2025</p>
+          <div class="entry-main">
             <h3>Vector Institute</h3>
-            <p class="tl-role">Machine Learning Engineer Associate</p>
+            <p class="entry-role">Machine Learning Engineer Associate</p>
             <p>Improved a multilabel text classifier by 8% F1 and sped up inference 5×. Built an ETL pipeline with LLM-based data synthesis for class imbalance, and shipped FastAPI microservices with CI/CD.</p>
-            <div class="chips">
-              <a class="chip" href="https://vectorinstitute.ai/" target="_blank" rel="noreferrer">vectorinstitute.ai<span aria-hidden="true">↗</span></a>
-            </div>
+            <p class="tokens"><span>nlp</span><span>llm synthesis</span><span>5× faster</span></p>
+          </div>
+          <div class="entry-links">
+            <a href="https://vectorinstitute.ai/" target="_blank" rel="noreferrer">vectorinstitute.ai ↗</a>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2024 — 2025</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2024 — 2025</p>
+          <div class="entry-main">
             <h3>Qliqless</h3>
-            <p class="tl-role">Co-founder</p>
+            <p class="entry-role">Co-founder</p>
             <p>A conversational execution platform that replaces traditional UI with natural language. Built the NLU pipeline that turns user intent into real-time API calls — no buttons, no forms. Accepted into District 3 and V1 Studio.</p>
-            <div class="chips">
-              <a class="chip" href="https://qliqless.ai" target="_blank" rel="noreferrer">qliqless.ai<span aria-hidden="true">↗</span></a>
-            </div>
+            <p class="tokens"><span>nlu</span><span>agents</span><span>founder</span></p>
+          </div>
+          <div class="entry-links">
+            <a href="https://qliqless.ai" target="_blank" rel="noreferrer">qliqless.ai ↗</a>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2024 — 2025</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2024 — 2025</p>
+          <div class="entry-main">
             <h3>e-SKY Solutions</h3>
-            <p class="tl-role">Machine Learning Software Engineer</p>
+            <p class="entry-role">Machine Learning Software Engineer</p>
             <p>Launched a RAG-based chatbot that cut instructor workload by 20%, built a recommendation system that lifted engagement by 15%, and trained 10+ employees on AI tooling.</p>
+            <p class="tokens"><span>rag</span><span>recsys</span></p>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2022 — 2023</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2022 — 2023</p>
+          <div class="entry-main">
             <h3>Azki</h3>
-            <p class="tl-role">Machine Learning Engineer</p>
+            <p class="entry-role">Machine Learning Engineer</p>
             <p>Iran's largest insurtech. Led the vision team behind card OCR processing 10k+ cards a month, and contributed to the insurance chatbot handling 1k+ weekly inquiries — both still live in production.</p>
-            <div class="chips">
-              <a class="chip" href="https://azki.com" target="_blank" rel="noreferrer">azki.com<span aria-hidden="true">↗</span></a>
-            </div>
+            <p class="tokens"><span>ocr</span><span>vision</span><span>10k+/mo</span></p>
+          </div>
+          <div class="entry-links">
+            <a href="https://azki.com" target="_blank" rel="noreferrer">azki.com ↗</a>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2021 — 2023</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2021 — 2023</p>
+          <div class="entry-main">
             <h3>RoboDoc Lab</h3>
-            <p class="tl-role">ML &amp; Robotics Lead, Human–Machine Interaction</p>
+            <p class="entry-role">ML &amp; Robotics Lead, Human–Machine Interaction</p>
             <p>Led ML and robotics development on intelligent assistive systems and human–robot collaboration.</p>
-            <div class="chips">
-              <a class="chip" href="https://www.researchgate.net/lab/RoboDoc-Human-and-Machine-Interaction-Lab-Azadeh-Mohebi" target="_blank" rel="noreferrer">ResearchGate<span aria-hidden="true">↗</span></a>
-            </div>
+            <p class="tokens"><span>hri</span><span>robotics</span></p>
+          </div>
+          <div class="entry-links">
+            <a href="https://www.researchgate.net/lab/RoboDoc-Human-and-Machine-Interaction-Lab-Azadeh-Mohebi" target="_blank" rel="noreferrer">ResearchGate ↗</a>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2020 — 2022</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2020 — 2022</p>
+          <div class="entry-main">
             <h3>Roobin</h3>
-            <p class="tl-role">Co-founder &amp; Technical Lead</p>
+            <p class="entry-role">Co-founder &amp; Technical Lead</p>
             <p>An interactive Farsi-speaking social robot for K-12 education, with its own block-programming language (Roobickly). Led a team of 10, shipped 300+ units, and won a UNICEF Innovation Award.</p>
-            <div class="chips">
-              <a class="chip" href="https://www.instagram.com/roobin_robot" target="_blank" rel="noreferrer">@roobin_robot<span aria-hidden="true">↗</span></a>
-              <a class="chip" href="https://www.unicef.org/iran/en/stories/unicef-innovation-challenge-iran-recognizes-top-innovative-solutions-during-covid-19" target="_blank" rel="noreferrer">UNICEF award<span aria-hidden="true">↗</span></a>
-            </div>
+            <p class="tokens"><span>hardware</span><span>300+ shipped</span><span>unicef</span></p>
+          </div>
+          <div class="entry-links">
+            <a href="https://www.instagram.com/roobin_robot" target="_blank" rel="noreferrer">@roobin_robot ↗</a>
+            <a href="https://www.unicef.org/iran/en/stories/unicef-innovation-challenge-iran-recognizes-top-innovative-solutions-during-covid-19" target="_blank" rel="noreferrer">UNICEF ↗</a>
           </div>
         </li>
 
-        <li class="tl-item">
-          <p class="tl-date">2018 — 2020</p>
-          <div class="tl-body">
+        <li class="entry spot reveal">
+          <p class="entry-when">2018 — 2020</p>
+          <div class="entry-main">
             <h3>IranDoc</h3>
-            <p class="tl-role">ML Developer &amp; Research Assistant</p>
+            <p class="entry-role">ML Developer &amp; Research Assistant</p>
             <p>Built a face recognition system (95% accuracy across 1,000+ identities) and applied NLP for keyword extraction over 500+ documents a day.</p>
+            <p class="tokens"><span>face recognition</span><span>nlp</span></p>
           </div>
         </li>
-
       </ol>
     </section>
 
     <!-- Education -->
     <section class="section" id="education">
-      <h2 class="section-title"><span>03</span>Education</h2>
-      <ol class="timeline">
-
-        <li class="tl-item is-current">
-          <p class="tl-date">2026 — Now</p>
-          <div class="tl-body">
-            <h3>MSc, Computer Science <span class="badge-now">Now</span></h3>
-            <p class="tl-role">Concordia University · Montréal</p>
-            <p>Moved from the PhD program to an MSc in Computer Science, alongside full-time research and engineering work.</p>
-            <div class="chips">
-              <a class="chip" href="https://www.concordia.ca/ginacody/computer-science-software-eng.html" target="_blank" rel="noreferrer">CS @ Concordia<span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </li>
-
-        <li class="tl-item">
-          <p class="tl-date">2023 — 2024</p>
-          <div class="tl-body">
-            <h3>PhD studies, AI</h3>
-            <p class="tl-role">Concordia University · coursework at Mila</p>
-            <p>Research on adversarial machine learning, including attacks on federated learning and LLMs.</p>
-            <div class="chips">
-              <a class="chip" href="https://www.concordia.ca/ginacody/information-systems-engineering.html" target="_blank" rel="noreferrer">Concordia<span aria-hidden="true">↗</span></a>
-              <a class="chip" href="https://mila.quebec/en" target="_blank" rel="noreferrer">Mila<span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </li>
-
-        <li class="tl-item">
-          <p class="tl-date">2020 — 2023</p>
-          <div class="tl-body">
-            <h3>MSc, Artificial Intelligence</h3>
-            <p class="tl-role">Shahid Beheshti University (SBU)</p>
-            <p>Developed a deep-RL planning method for autonomous visual navigation of a wheeled robot, trained and evaluated in Unity simulation. Published at ICCKE 2022.</p>
-            <div class="chips">
-              <a class="chip" href="https://www.researchgate.net/lab/RoIAA-Robotics-Intelligent-Autonomous-Agents-Armin-Salimi-Badr" target="_blank" rel="noreferrer">RoIAA Lab<span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </li>
-
-        <li class="tl-item">
-          <p class="tl-date">2016 — 2020</p>
-          <div class="tl-body">
-            <h3>BSc, Computer Engineering</h3>
-            <p class="tl-role">QUT</p>
-            <p>Final project: Roobin, an interactive social robot with a block-programming language for K-12 education.</p>
-          </div>
-        </li>
-
-      </ol>
+      <header class="section-head reveal">
+        <span class="idx">03</span><h2>Education</h2>
+      </header>
+      <div class="edu">
+        <article class="edu-card spot reveal is-current">
+          <p class="edu-when">2026 — now</p>
+          <h3>MSc, Computer Science</h3>
+          <p class="edu-where">Concordia University · Montréal</p>
+          <p>Moved from the PhD program to an MSc in Computer Science, alongside full-time research and engineering work.</p>
+        </article>
+        <article class="edu-card spot reveal">
+          <p class="edu-when">2023 — 2024</p>
+          <h3>PhD studies, AI</h3>
+          <p class="edu-where">Concordia University · coursework at <a href="https://mila.quebec/en" target="_blank" rel="noreferrer">Mila</a></p>
+          <p>Research on adversarial machine learning, including attacks on federated learning and LLMs.</p>
+        </article>
+        <article class="edu-card spot reveal">
+          <p class="edu-when">2020 — 2023</p>
+          <h3>MSc, Artificial Intelligence</h3>
+          <p class="edu-where">Shahid Beheshti University · <a href="https://www.researchgate.net/lab/RoIAA-Robotics-Intelligent-Autonomous-Agents-Armin-Salimi-Badr" target="_blank" rel="noreferrer">RoIAA Lab</a></p>
+          <p>Deep-RL planning for autonomous visual navigation of a wheeled robot, trained in Unity simulation. Published at ICCKE 2022.</p>
+        </article>
+        <article class="edu-card spot reveal">
+          <p class="edu-when">2016 — 2020</p>
+          <h3>BSc, Computer Engineering</h3>
+          <p class="edu-where">QUT</p>
+          <p>Final project: Roobin, an interactive social robot with a block-programming language for K-12 education.</p>
+        </article>
+      </div>
     </section>
 
     <!-- Projects -->
     <section class="section" id="projects">
-      <h2 class="section-title"><span>04</span>Projects</h2>
-      <div class="cards">
-        <a class="card card-link" href="roomi/">
-          <div class="card-head">
-            <span class="card-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.25"/><circle cx="15" cy="14" r="1.25"/><path d="M12 4v4"/><circle cx="12" cy="3" r="1"/></svg>
-            </span>
-            <span class="pill">In development</span>
+      <header class="section-head reveal">
+        <span class="idx">04</span><h2>Projects</h2>
+      </header>
+      <div class="projects">
+        <a class="project spot reveal" href="roomi/">
+          <div class="project-art" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="26" y="42" width="68" height="52" rx="16"/><circle cx="48" cy="68" r="5"/><circle cx="72" cy="68" r="5"/><path d="M60 26v16"/><circle cx="60" cy="22" r="4"/><path d="M50 82q10 6 20 0"/></svg>
           </div>
-          <h3>ROOMI <span class="arrow" aria-hidden="true">→</span></h3>
-          <p>A home robot — a small companion that lives in your space, listens, and helps with everyday things around the house.</p>
+          <div class="project-body">
+            <p class="project-tag">in development</p>
+            <h3>ROOMI <span aria-hidden="true">→</span></h3>
+            <p>A home robot — a small companion that lives in your space, listens, and helps with everyday things around the house.</p>
+          </div>
         </a>
 
-        <div class="card">
-          <div class="card-head">
-            <span class="card-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </span>
-            <a class="pill pill-link" href="https://github.com/similasa" target="_blank" rel="noreferrer">@similasa ↗</a>
-          </div>
-          <h3>Open-source activity</h3>
-          <div class="gh-chart-wrap">
-            <img class="gh-chart" src="https://ghchart.rshah.org/similasa" alt="GitHub contribution graph for the past year" loading="lazy" width="663" height="104" />
+        <div class="project spot reveal">
+          <div class="project-body">
+            <p class="project-tag"><a href="https://github.com/similasa" target="_blank" rel="noreferrer">github.com/similasa ↗</a></p>
+            <h3>Open-source activity</h3>
+            <div class="gh-chart-wrap">
+              <img class="gh-chart" src="https://ghchart.rshah.org/7c6cff/similasa" alt="GitHub contribution graph for the past year" loading="lazy" width="663" height="104" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Publications & honors -->
-    <section class="section" id="publications">
-      <h2 class="section-title"><span>05</span>Publications &amp; Honors</h2>
-      <ul class="rows">
-        <li class="row">
-          <div>
-            <a class="row-title" href="https://ieeexplore.ieee.org/document/9960115" target="_blank" rel="noreferrer">An Efficient Planning Method for Autonomous Navigation of a Wheeled-Robot Based on Deep Reinforcement Learning</a>
-            <p class="row-sub">A. Salimi Sadr, M. Khojasteh, H. Malek, A. Salimi-Badr · ICCKE</p>
-          </div>
-          <span class="row-meta">2022</span>
+    <section class="section" id="honors">
+      <header class="section-head reveal">
+        <span class="idx">05</span><h2>Publications &amp; Honors</h2>
+      </header>
+      <ul class="honors">
+        <li class="reveal">
+          <span class="honor-meta">2022 · paper</span>
+          <a class="honor-title" href="https://ieeexplore.ieee.org/document/9960115" target="_blank" rel="noreferrer">An Efficient Planning Method for Autonomous Navigation of a Wheeled-Robot Based on Deep Reinforcement Learning ↗</a>
+          <span class="honor-sub">A. Salimi Sadr, M. Khojasteh, H. Malek, A. Salimi-Badr · ICCKE</span>
         </li>
-        <li class="row">
-          <div>
-            <a class="row-title" href="https://www.unicef.org/iran/en/stories/unicef-innovation-challenge-iran-recognizes-top-innovative-solutions-during-covid-19" target="_blank" rel="noreferrer">UNICEF Innovation Award</a>
-            <p class="row-sub">For Roobin, UNICEF Innovation Challenge Iran</p>
-          </div>
-          <span class="row-meta">Award</span>
+        <li class="reveal">
+          <span class="honor-meta">award</span>
+          <a class="honor-title" href="https://www.unicef.org/iran/en/stories/unicef-innovation-challenge-iran-recognizes-top-innovative-solutions-during-covid-19" target="_blank" rel="noreferrer">UNICEF Innovation Award ↗</a>
+          <span class="honor-sub">For Roobin, UNICEF Innovation Challenge Iran</span>
         </li>
-        <li class="row">
-          <div>
-            <p class="row-title">Silver Medal, RoboCup Austrian Open</p>
-            <p class="row-sub">Rescue League</p>
-          </div>
-          <span class="row-meta">2014</span>
+        <li class="reveal">
+          <span class="honor-meta">2014 · medal</span>
+          <span class="honor-title">Silver Medal, RoboCup Austrian Open</span>
+          <span class="honor-sub">Rescue League</span>
         </li>
-        <li class="row">
-          <div>
-            <p class="row-title">Top 1% of 4,200 teams, IEEEXtreme</p>
-            <p class="row-sub">International 24-hour programming competition</p>
-          </div>
-          <span class="row-meta">Ranking</span>
+        <li class="reveal">
+          <span class="honor-meta">ranking</span>
+          <span class="honor-title">Top 1% of 4,200 teams, IEEEXtreme</span>
+          <span class="honor-sub">International 24-hour programming competition</span>
         </li>
       </ul>
     </section>
 
-    <!-- Places -->
+    <!-- Places: a dotted globe (globe.js), cities from places.js -->
     <section class="section" id="places">
-      <h2 class="section-title"><span>06</span>Places I've been</h2>
-      <div class="map-card">
-        <div id="map" class="map" role="region" aria-label="Interactive map of places I've been"></div>
-        <p class="map-count" id="mapCount" aria-live="polite"></p>
-        <p class="map-hint">Click the map to zoom</p>
+      <header class="section-head reveal">
+        <span class="idx">06</span><h2>Places I've been</h2>
+        <p class="section-note" id="mapCount" aria-live="polite"></p>
+      </header>
+      <div class="globe-stage reveal">
+        <canvas id="globe" class="globe" role="img" aria-label="A spinning globe with the cities I've visited"></canvas>
+        <div class="globe-tip" id="globeTip" hidden></div>
+        <p class="globe-hint">Drag to spin · hover a light</p>
       </div>
     </section>
 
   </main>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
-      <p>
-        Off the clock: competitive
-        <a href="https://royaleapi.com/player/9RVJG9R2V" target="_blank" rel="noreferrer">Clash Royale</a> player.
-      </p>
-      <p class="footer-meta">© <span id="year">2026</span> Ali Salimi Sadr · Hand-built, no frameworks.</p>
+    <p class="footer-big reveal">Let's build something <em>real-time</em>.</p>
+    <div class="footer-row">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/ali-salimi-sadr" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/similasa" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://royaleapi.com/player/9RVJG9R2V" target="_blank" rel="noreferrer">Clash Royale ↗</a>
+      </div>
+      <p class="footer-meta">© <span id="year">2026</span> Ali Salimi Sadr · hand-built, no frameworks</p>
     </div>
   </footer>
 
   <script src="places.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="hero.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="map.js"></script>
+  <script src="globe.js"></script>
+  <script src="ui.js"></script>
 </body>
 </html>

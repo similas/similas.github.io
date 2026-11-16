@@ -5,10 +5,13 @@ Personal site of Ali Salimi Sadr — plain HTML/CSS/JS, served by GitHub Pages f
 | File | What it is |
 |---|---|
 | `index.html` | Home page |
-| `styles.css` | All styles (shared with sub-pages); colors are tokens at the top |
-| `theme.js` | Light/dark theme (OS preference, remembered toggle), sticky nav |
-| `places.js` | **Cities on the map** — add one line per city |
-| `map.js` | The "Places I've been" map (Leaflet + Natural Earth country shapes, no API key) |
+| `home.css` | Home page styles; colors are tokens at the top |
+| `styles.css` | Styles for the sub-pages (`roomi/`) |
+| `theme.js` | Light/dark theme (OS preference, remembered toggle) |
+| `hero.js` | Hero animation: the name is "denoised" out of particle noise |
+| `places.js` | **Cities on the globe** — add one line per city |
+| `globe.js` | The "Places I've been" dotted globe (d3-geo + Natural Earth, no API key) |
+| `ui.js` | Reveal-on-scroll and the cursor spotlight on cards |
 | `roomi/` | ROOMI project page and its privacy policy |
 
 ## Adding a place
