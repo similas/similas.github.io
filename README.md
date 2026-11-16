@@ -8,7 +8,7 @@ Personal site of Ali Salimi Sadr — plain HTML/CSS/JS, served by GitHub Pages f
 | `styles.css` | All styles (shared with sub-pages); colors are tokens at the top |
 | `theme.js` | Light/dark theme (OS preference, remembered toggle), sticky nav |
 | `places.js` | **Cities on the map** — add one line per city |
-| `map.js` | The "Places I've been" map (Leaflet + CARTO tiles) |
+| `map.js` | The "Places I've been" map (Leaflet + Natural Earth country shapes, no API key) |
 | `roomi/` | ROOMI project page and its privacy policy |
 
 ## Adding a place
