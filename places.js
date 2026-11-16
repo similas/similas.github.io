@@ -75,6 +75,12 @@ window.PLACES = [
   // United Arab Emirates
   { city: "Dubai", country: "United Arab Emirates", lat: 25.2048, lng: 55.2708 },
 
+  // Vatican City
+  { city: "Vatican City", country: "Vatican", lat: 41.9029, lng: 12.4534 },
+
+  // Czechia
+  { city: "Prague", country: "Czechia", lat: 50.0755, lng: 14.4378 },
+
   // Russia
   { city: "Saint Petersburg", country: "Russia", lat: 59.9343, lng: 30.3351 },
   { city: "Moscow",           country: "Russia", lat: 55.7558, lng: 37.6173 },
