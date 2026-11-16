@@ -721,77 +721,6 @@ a.row-title:hover {
   font-size: 0.875rem;
 }
 
-.city-list {
-  list-style: none;
-  margin-top: 20px;
-  border-top: 1px solid var(--border);
-}
-
-.country-group {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 16px;
-  align-items: start;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.country-name {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  justify-self: start;
-  margin-top: 3px;
-  border: 0;
-  background: none;
-  color: var(--text);
-  font: inherit;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-align: left;
-  cursor: pointer;
-  transition: color var(--t);
-}
-
-.country-name:hover {
-  color: var(--accent);
-}
-
-.country-count {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 400;
-  color: var(--text-3);
-}
-
-.country-cities {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.city {
-  appearance: none;
-  height: 28px;
-  padding: 0 11px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--text-2);
-  font: inherit;
-  font-size: 0.8125rem;
-  cursor: pointer;
-  transition: color var(--t), border-color var(--t), background-color var(--t);
-}
-
-.city:hover,
-.city[aria-pressed="true"] {
-  color: var(--text);
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
-
 /* Leaflet overrides */
 
 .leaflet-container {
@@ -1114,11 +1043,6 @@ a.row-title:hover {
 
   .map {
     height: 320px;
-  }
-
-  .country-group {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 
   .footer {

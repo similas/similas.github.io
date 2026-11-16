@@ -7,7 +7,6 @@
   var mapEl = document.getElementById("map");
   if (!mapEl) return;
   var card = mapEl.parentElement;
-  var listEl = document.getElementById("cityList");
   var countEl = document.getElementById("mapCount");
 
   var LAND_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json";
@@ -43,7 +42,6 @@
   mapEl.addEventListener("mouseleave", function () { map.scrollWheelZoom.disable(); });
 
   // ── Pins ──
-  var buttons = [];
   var markers = places.map(function (p, i) {
     var marker = L.marker([p.lat, p.lng], {
       icon: L.divIcon({ className: "pin", html: "<span></span>", iconSize: [10, 10] }),
@@ -64,59 +62,12 @@
       if (el) el.classList.toggle("is-selected", i === j);
       if (i !== j) m.closeTooltip();
     });
-    buttons.forEach(function (b, j) { b.setAttribute("aria-pressed", String(i === j)); });
     var zoom = Math.max(map.getZoom(), 6);
     if (reduceMotion) map.setView([p.lat, p.lng], zoom);
     else map.flyTo([p.lat, p.lng], zoom, { duration: 1.1 });
     markers[i].openTooltip();
     card.classList.add("is-active");
   }
-
-  // City list, grouped by country (in the order countries first appear in places.js).
-  var groups = new Map();
-  places.forEach(function (p, i) {
-    if (!groups.has(p.country)) groups.set(p.country, []);
-    groups.get(p.country).push(i);
-  });
-
-  function fitCountry(indices) {
-    buttons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
-    markers.forEach(function (m) { m.closeTooltip(); var el = m.getElement(); if (el) el.classList.remove("is-selected"); });
-    var bounds = L.latLngBounds(indices.map(function (i) { return [places[i].lat, places[i].lng]; }));
-    var opts = { padding: [60, 60], maxZoom: 6 };
-    if (reduceMotion) map.fitBounds(bounds, opts);
-    else map.flyToBounds(bounds, Object.assign({ duration: 1.1 }, opts));
-    card.classList.add("is-active");
-  }
-
-  groups.forEach(function (indices, country) {
-    var li = document.createElement("li");
-    li.className = "country-group";
-
-    var head = document.createElement("button");
-    head.type = "button";
-    head.className = "country-name";
-    head.innerHTML = country + ' <span class="country-count">' + indices.length + "</span>";
-    head.setAttribute("aria-label", "Show " + country + " on the map");
-    head.addEventListener("click", function () { fitCountry(indices); });
-
-    var cities = document.createElement("div");
-    cities.className = "country-cities";
-    indices.forEach(function (i) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "city";
-      b.setAttribute("aria-pressed", "false");
-      b.textContent = places[i].city;
-      b.addEventListener("click", function () { select(i); });
-      cities.appendChild(b);
-      buttons[i] = b;
-    });
-
-    li.appendChild(head);
-    li.appendChild(cities);
-    listEl.appendChild(li);
-  });
 
   if (markers.length) {
     var pad = mapEl.offsetWidth < 500 ? 20 : 40;

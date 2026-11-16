@@ -4,7 +4,6 @@
 // on Google Maps and click the numbers at the top of the menu to copy them.
 // `country` must match the map's country name (e.g. "United Arab Emirates")
 // for that country to be highlighted. `note` is optional (e.g. "Home").
-// Cities are grouped by country under the map, in the order listed here.
 
 window.PLACES = [
   // Canada
@@ -75,4 +74,8 @@ window.PLACES = [
 
   // United Arab Emirates
   { city: "Dubai", country: "United Arab Emirates", lat: 25.2048, lng: 55.2708 },
+
+  // Russia
+  { city: "Saint Petersburg", country: "Russia", lat: 59.9343, lng: 30.3351 },
+  { city: "Moscow",           country: "Russia", lat: 55.7558, lng: 37.6173 },
 ];
