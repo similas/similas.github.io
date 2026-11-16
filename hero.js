@@ -22,7 +22,7 @@
 
   var W = 0, H = 0, dpr = 1;
   var parts = [];            // {hx, hy, ex, ey, x, y, vx, vy, c, free}
-  var colors = ["#8b7bff", "#5ee6ff"];
+  var color = "#ececf1";
   var mouse = { x: -9999, y: -9999, active: false };
   var startedAt = 0;
   var running = false;
@@ -35,23 +35,7 @@
   }
 
   function readColors() {
-    var cs = getComputedStyle(document.documentElement);
-    colors = [
-      cs.getPropertyValue("--p1").trim() || colors[0],
-      cs.getPropertyValue("--p2").trim() || colors[1],
-    ];
-  }
-
-  function hexToRgb(hex) {
-    var h = hex.replace("#", "");
-    if (h.length === 3) h = h.split("").map(function (c) { return c + c; }).join("");
-    var n = parseInt(h, 16);
-    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-  }
-
-  function mix(a, b, t) {
-    return "rgb(" + Math.round(a[0] + (b[0] - a[0]) * t) + "," +
-      Math.round(a[1] + (b[1] - a[1]) * t) + "," + Math.round(a[2] + (b[2] - a[2]) * t) + ")";
+    color = getComputedStyle(document.documentElement).getPropertyValue("--particle").trim() || color;
   }
 
   // Sample the name's pixels at exactly where the <h1> text sits.
@@ -93,16 +77,14 @@
       }
     }
 
-    var c1 = hexToRgb(colors[0]), c2 = hexToRgb(colors[1]);
-    var x0 = tr.left - rect.left, x1 = tr.right - rect.left;
     var spread = Math.min(W, H) * 0.42;
     parts = homes.map(function (h) {
       var ex = W / 2 + gauss() * spread * 1.3, ey = H / 2 + gauss() * spread * 0.8;
       return {
         hx: h[0], hy: h[1], ex: ex, ey: ey,
         x: reduceMotion ? h[0] : ex, y: reduceMotion ? h[1] : ey, vx: 0, vy: 0, free: false,
-        c: mix(c1, c2, Math.max(0, Math.min(1, (h[0] - x0) / (x1 - x0 || 1)))),
-        s: step * 0.33,
+        a: 0.55 + Math.random() * 0.45,   // slight per-point brightness variation
+        s: step * 0.24,
       };
     });
     for (var i = 0; i < DRIFTERS; i++) {
@@ -110,7 +92,7 @@
       parts.push({
         hx: px, hy: py, ex: px, ey: py, x: px, y: py,
         vx: gauss() * 0.15, vy: gauss() * 0.15, free: true,
-        c: mix(c1, c2, Math.random()), s: 0.8 + Math.random() * 0.9,
+        a: 0.15 + Math.random() * 0.3, s: 0.5 + Math.random() * 0.7,
       });
     }
     hero.classList.add("has-particles");
@@ -134,6 +116,7 @@
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = color;
 
     var R = 90, R2 = R * R;
     var settled = progress >= 1;
@@ -164,8 +147,7 @@
         p.vx *= 0.78; p.vy *= 0.78;
         p.x += p.vx; p.y += p.vy;
       }
-      ctx.globalAlpha = p.free ? 0.35 : 0.55 + 0.45 * ab;
-      ctx.fillStyle = p.c;
+      ctx.globalAlpha = p.free ? p.a : p.a * (0.45 + 0.55 * ab);
       ctx.fillRect(p.x - p.s, p.y - p.s, p.s * 2, p.s * 2);
     }
     ctx.globalAlpha = 1;

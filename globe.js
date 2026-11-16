@@ -38,12 +38,12 @@
     var cs = getComputedStyle(document.documentElement);
     function v(n, d) { return cs.getPropertyValue(n).trim() || d; }
     colors = {
-      dot: v("--globe-dot", "rgba(255,255,255,0.22)"),
-      dotVisited: v("--p2", "#5ee6ff"),
-      arc: v("--p1", "#8b7bff"),
-      city: v("--city", "#ffffff"),
-      rim: v("--globe-rim", "rgba(139,123,255,0.25)"),
-      body: v("--globe-body", "#0b0b12"),
+      dot: v("--globe-dot", "rgba(255,255,255,0.16)"),
+      dotVisited: v("--globe-visited", "rgba(255,255,255,0.85)"),
+      arc: v("--accent", "#d4a373"),
+      city: v("--accent", "#d4a373"),
+      rim: v("--globe-rim", "rgba(255,255,255,0.05)"),
+      body: v("--globe-body", "#09090c"),
     };
   }
 
@@ -157,7 +157,7 @@
       var a = 0.25 + 0.75 * q[2];
       ctx.globalAlpha = d.v ? a : a * 0.9;
       ctx.fillStyle = d.v ? colors.dotVisited : colors.dot;
-      var s = d.v ? ds * 1.25 : ds;
+      var s = ds;
       ctx.fillRect(q[0] - s, q[1] - s, s * 2, s * 2);
     }
     ctx.globalAlpha = 1;
@@ -171,7 +171,7 @@
       // visible if on the front face, or lifted out past the globe's edge
       function seen(q) { return q[2] > 0 || q[3] > 1; }
       ctx.strokeStyle = colors.arc;
-      ctx.globalAlpha = 0.28;
+      ctx.globalAlpha = 0.18;
       ctx.beginPath();
       var pen = false;
       proj.forEach(function (q) {
@@ -183,8 +183,8 @@
       var head = (phase + arc.offset) % 1;
       var hi = Math.floor(head * (proj.length - 1));
       var tail = Math.max(0, hi - 8);
-      ctx.globalAlpha = 0.95;
-      ctx.lineWidth = 1.8;
+      ctx.globalAlpha = 0.8;
+      ctx.lineWidth = 1.4;
       ctx.beginPath();
       pen = false;
       for (var k = tail; k <= hi; k++) {
@@ -207,9 +207,9 @@
       var isHover = i === hover, isHome = c.p.city === HOME;
       var r = isHover ? 4.5 : isHome ? 3.6 : 2.6;
       var glow = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], r * (4 + pulse * 2));
-      glow.addColorStop(0, colors.dotVisited);
+      glow.addColorStop(0, colors.city);
       glow.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.globalAlpha = 0.35 * q[2];
+      ctx.globalAlpha = 0.22 * q[2];
       ctx.fillStyle = glow;
       ctx.beginPath(); ctx.arc(q[0], q[1], r * (4 + pulse * 2), 0, Math.PI * 2); ctx.fill();
       ctx.globalAlpha = 0.6 + 0.4 * q[2];
