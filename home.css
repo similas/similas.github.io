@@ -361,6 +361,11 @@ main { position: relative; }
 
 .about-text p { color: var(--text-2); max-width: 40em; }
 .about-text p + p { margin-top: 18px; }
+.trail {
+  margin-top: 26px !important;
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.02em;
+  color: var(--text-3) !important;
+}
 .about-text strong { color: var(--text); font-weight: 600; }
 .statement {
   font-family: var(--sans);
